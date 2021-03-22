@@ -8,8 +8,13 @@ module.exports = {
     description: `Personal blog by Sehun Jeong`,
     siteUrl: `https://jeongsehun.github.io`,
     social: {
-      twitter: ``,
+      email: `sehun.dev@gmail.com`,
+      github: `https://github.com/jeongsehun`,
+      linkedIn: `https://www.linkedin.com/in/sehunjeong`,
     },
+  },
+  flags: {
+    DEV_SSR: false,
   },
   plugins: [
     `gatsby-plugin-image`,

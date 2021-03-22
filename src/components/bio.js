@@ -19,7 +19,7 @@ const Bio = () => {
             summary
           }
           social {
-            twitter
+            github
           }
         }
       }
@@ -27,7 +27,8 @@ const Bio = () => {
   `)
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
-  const author = data.site.siteMetadata?.author
+  const author = data.site.siteMetadata?.author;
+  const social = data.site.siteMetadata?.social;
 
   return (
     <div className="bio">
@@ -43,7 +44,7 @@ const Bio = () => {
       />
       <p>
         Written by{` `}
-        <strong>Sehun Jeong</strong>
+        <a href={social.github} target="_blank" rel="noopener">Sehun Jeong</a>
         <br />
         {author?.summary || null}
       </p>
