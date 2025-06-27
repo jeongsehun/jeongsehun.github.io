@@ -4,10 +4,23 @@
 /node_modules
 /.pnp
 .pnp.js
+
+# Yarn 관련 - 모든 캐시 및 대용량 파일들 제외
 /.yarn/*
 !/.yarn/releases
 !/.yarn/plugins
 !/.yarn/sdks
+.yarn/cache/
+.yarn/install-state.gz
+.yarn/global/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/patches/
+*.yarn-metadata.json
+
+# 패키지 관리자 락 파일들 (용량이 클 수 있음)
+# yarn.lock은 필요하지만 너무 크면 주석 해제
+# yarn.lock
 
 # testing
 /coverage
@@ -152,3 +165,17 @@ public
 # Storybook build outputs
 .out
 .storybook-out
+
+# 큰 바이너리 파일들
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 이미지 캐시
+**/*-cache/
+**/cache/
+
+# 빌드 아티팩트
+dist/
+build/
