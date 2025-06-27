@@ -54,7 +54,8 @@ const securityHeaders = [
   },
 ]
 
-const output = process.env.EXPORT ? 'export' : undefined
+const isExport = process.env.EXPORT === '1'
+const output = isExport ? 'export' : undefined
 const basePath = process.env.BASE_PATH || undefined
 const unoptimized = process.env.UNOPTIMIZED ? true : undefined
 
@@ -81,14 +82,19 @@ module.exports = () => {
       ],
       unoptimized,
     },
-    async headers() {
-      return [
-        {
-          source: '/(.*)',
-          headers: securityHeaders,
-        },
-      ]
-    },
+    // 정적 내보내기 시에는 headers 함수를 비활성화
+    ...(isExport
+      ? {}
+      : {
+          async headers() {
+            return [
+              {
+                source: '/(.*)',
+                headers: securityHeaders,
+              },
+            ]
+          },
+        }),
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.svg$/,
